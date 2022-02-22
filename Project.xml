@@ -29,9 +29,15 @@
 
 	<!-- _____________________________ Path Settings ____________________________ -->
 
-	<set name="BUILD_DIR" value="export" />
+	<set name="BUILD_DIR" value="export/dev" if="debug" />
+	<set name="BUILD_DIR" value="export/full" unless="debug" />
+	<set name="BUILD_DIR" value="export/32bit" if="32bits" />
+
 	<source path="source" />
+
 	<assets path="assets" />
+
+	<assets path="assets/fonts" embed='true'/>
 
 	<!-- _______________________________ Libraries ______________________________ -->
 
