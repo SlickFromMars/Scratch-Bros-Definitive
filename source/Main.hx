@@ -13,8 +13,6 @@ import openfl.display.Sprite;
 import lime.utils.Assets;
 import lime.app.Application;
 
-import custom.mods.ModSystem;
-
 class Main extends Sprite
 {
 	public static var fpsVar:FPS;
@@ -32,7 +30,7 @@ class Main extends Sprite
 	}
 
 	function setupGame():Void {
-		addChild(new FlxGame(0, 0, initState, 1, 60, 60, true, true));
+		addChild(new FlxGame(0, 0, initState, 1, 60, 60));
 
 		trace('Running version: ' + Application.current.meta.get('version'));
 

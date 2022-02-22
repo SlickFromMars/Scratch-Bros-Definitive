@@ -35,7 +35,14 @@
 
 	<source path="source" />
 
-	<assets path="assets" />
+	<assets path="assets/main" rename="assets" exclude="*.ogg" if="web"/>
+	<assets path="assets/main" rename="assets" exclude="*.kra"/>
+	<assets path="assets/main" rename="assets" exclude="*.mp3" unless="web"/>
+
+	<assets path="assets/dynamic"   library="dynamic"   exclude="*.ogg" if="web"/>
+	<assets path="assets/dynamic"   library="dynamic"   exclude="*.mp3" unless="web"/>
+
+	<library name="dynamic"   preload="true" />
 
 	<assets path="assets/fonts" embed='true'/>
 
@@ -92,4 +99,9 @@
 	<!-- _________________________________ Custom _______________________________ -->
 
 	<!--Place custom nodes like icons here (higher priority to override the HaxeFlixel icon)-->
+
+	<icon path="art/icons/01/icon16.png" size='16'/>
+	<icon path="art/icons/01/icon32.png" size='32'/>
+	<icon path="art/icons/01/icon64.png" size='64'/>
+	<icon path="art/icons/01/iconOG.png" />
 </project>
