@@ -1,11 +1,14 @@
 package;
 
 import flixel.util.FlxSave;
+import lime.app.Application;
 
 using StringTools;
 
 class EngineData
 {
+    public static var gameVersion = "1.0.0";
+
     public static var characterList = [
         'Folda',
         'Bright'
@@ -38,5 +41,11 @@ class EngineData
         characterList = list;
 
         return list;
+    }
+
+    public static function getGameVersion():String {
+        gameVersion = Application.current.meta.get('version');
+        
+        return gameVersion;
     }
 }

@@ -43,10 +43,11 @@ class SelectState extends FlxState
 			trace(error.severity + ": " + error.code + " - " + error.message + " - ORIGIN: " + error.origin);
 		};
 
-		polymod.Polymod.init({
+		var modMetadata = polymod.Polymod.init({
 			modRoot: "mods/",
 			dirs: newList,
 			errorCallback: errors,
+			framework: OPENFL,
 			ignoredFiles: polymod.Polymod.getDefaultIgnoreList(),
 			frameworkParams: {
 				assetLibraryPaths: [
@@ -55,6 +56,10 @@ class SelectState extends FlxState
 				]
 			}
 		});
+
+		for(i in modMetadata) {
+			trace('Mod ' + i.title + ' was loaded! Version: ' + i.modVersion);
+		}
 		#end
 
 		EngineData.loadProgress();

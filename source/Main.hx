@@ -11,7 +11,6 @@ import flixel.ui.FlxButton;
 import flixel.ui.FlxSpriteButton;
 import openfl.display.Sprite;
 import lime.utils.Assets;
-import lime.app.Application;
 
 class Main extends Sprite
 {
@@ -31,8 +30,7 @@ class Main extends Sprite
 
 	function setupGame():Void {
 		addChild(new FlxGame(0, 0, initState, 1, 60, 60));
-
-		trace('Running version: ' + Application.current.meta.get('version'));
+		EngineData.getGameVersion();
 
 		#if !mobile
 		fpsVar = new FPS(10, 3, 0xFFFFFF);
