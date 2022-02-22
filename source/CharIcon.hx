@@ -5,8 +5,8 @@ import flixel.FlxSprite;
 
 class CharIcon extends FlxSprite
 {
-    public function new(name:String, startX:Int, startY:Int) {
-        var char = name;
+    public function new(index:Int) {
+        var char = EngineData.characterList[index];
         if(Assets.exists(Path.getPath(char, 'image')) == false) {
             char = '_';
         }

@@ -35,7 +35,7 @@ class EngineData
     }
 
     public static function loadCharList():Array<String> {
-        var rawText:String = CoolUtil.getText('assets/data/characterList.txt').trim();
+        var rawText:String = CoolUtil.getText('config/characterList.txt').trim();
         var list:Array<String> = rawText.split('\n');
 
         characterList = list;

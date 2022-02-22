@@ -4,7 +4,7 @@
 
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="Super Scratch Bros Ultimate: Definitive Edition" file="SSBU" main="Main" version="1.0.0" company="SlickStudios" />
+	<app title="Super Scratch Bros - Definitive Edition" file="Scratch Bros" main="Main" version="1.0.0" company="SlickStudios" />
 
 	<!--Switch Export with Unique ApplicationID and Icon-->
 	<set name="APP_ID" value="0x0100f6c013bbc000" />
@@ -49,6 +49,8 @@
 	<library name="dynamic"   preload="true" />
 
 	<assets path="assets/fonts" embed='true'/>
+
+	<assets path="assets/config" rename="config" embed='true'/>
 
 	<assets path="dlls/"                rename=''	/>
 

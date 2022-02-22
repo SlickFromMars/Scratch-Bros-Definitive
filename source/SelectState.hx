@@ -52,7 +52,7 @@ class SelectState extends FlxState
 			frameworkParams: {
 				assetLibraryPaths: [
 					"data" => "data", "images" => "images", "music" => "music",
-					"sounds" => "sounds", "dynamic" => "dynamic", "fonts" => "fonts"
+					"sounds" => "sounds", "dynamic" => "dynamic", "fonts" => "fonts", "config" => "config"
 				]
 			}
 		});
@@ -67,21 +67,27 @@ class SelectState extends FlxState
 
 		camUI = new FlxCamera();
 		FlxG.cameras.reset(camUI);
+		
+		add(camUI);
 
 		FlxG.sound.playMusic(Path.getPath('menu', 'music'), 0.6, true);
 
-		var bg = new CoolBackSprite();
+		var bg = new FlxSprite();
+		bg.makeGraphic(FlxG.width, FlxG.height, FlxColor.GRAY);
 		add(bg);
 
-		var startY = 0;
+		icons = new FlxTypedGroup<CharIcon>();
+		add(icons);
+		
+		for(i in 0...32) {
+			var icon = new CharIcon(i);
+			icon.ID = i;
+			icons.add(icon);
 
-		for(i in 0...4) {
-			var startX = 0;
-			startY += 100;
+			var row = Math.floor(i/8);
 
-			for(l in 0...8) {
-
-			}
+			icon.y = row * 100;
+			icon.x = (i - (row * 8)) * 100;
 		}
 		
 		super.create();
