@@ -1,5 +1,14 @@
 package;
 
+#if sys
+import sys.FileSystem;
+#end
+
+#if MODS_ALLOWED
+import polymod.Polymod.Framework;
+import polymod.Polymod.PolymodError;
+#end
+
 import flixel.FlxCamera;
 import flixel.util.FlxColor;
 import flixel.FlxG;
@@ -18,6 +27,36 @@ class SelectState extends FlxState
 
 	override public function create()
 	{
+		#if MODS_ALLOWED
+		var modList = FileSystem.readDirectory('mods');
+		var newList:Array<String> = [];
+
+		for(file in modList) {
+			if(FileSystem.isDirectory('mods/$file')) {
+				newList.push(file);
+			}
+		}
+		trace(newList);
+
+		var errors = (error:PolymodError) ->
+		{
+			trace(error.severity + ": " + error.code + " - " + error.message + " - ORIGIN: " + error.origin);
+		};
+
+		polymod.Polymod.init({
+			modRoot: "mods/",
+			dirs: newList,
+			errorCallback: errors,
+			ignoredFiles: polymod.Polymod.getDefaultIgnoreList(),
+			frameworkParams: {
+				assetLibraryPaths: [
+					"data" => "data", "images" => "images", "music" => "music",
+					"sounds" => "sounds", "dynamic" => "dynamic", "fonts" => "fonts"
+				]
+			}
+		});
+		#end
+
 		EngineData.loadProgress();
 		EngineData.loadCharList();
 
