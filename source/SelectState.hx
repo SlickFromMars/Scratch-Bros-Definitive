@@ -48,7 +48,7 @@ class SelectState extends FlxState
 			dirs: newList,
 			errorCallback: errors,
 			framework: OPENFL,
-			ignoredFiles: polymod.Polymod.getDefaultIgnoreList(),
+			ignoredFiles: polymod.Polymod.getDefaultIgnoreList().concat(['images/logo']),
 			frameworkParams: {
 				assetLibraryPaths: [
 					"data" => "data", "images" => "images", "music" => "music",
